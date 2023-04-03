@@ -97,14 +97,19 @@ z.then((response) => {
 let list2 = document.querySelector('.list2');
 
 
-let a = fetch('https://rickandmortyapi.com/api/character');
-a.then((response) => {
+fetch('http://localhost:8000/charcters',{
+  method:"GET",
+  headers:{
+    "Content-Type":"application/json;charset=utf-8"
+  }  
+}).then((response) => {
   // console.log(response)
+  // console.log(response.json())
   return response.json();
 }).then((n) => {
-  console.log(n.results);
+  // console.log(n);
   list2.innerHTML = '';
-  n.results.forEach((el) => {
+  n.forEach((el) => {
     console.log(el.name)
     list2.innerHTML += `<li>${el.name}</li> 
     <br>
